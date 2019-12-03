@@ -10,8 +10,11 @@ from flask import Flask, jsonify, render_template
 app = Flask(__name__)
 
 # Create an engine that can talk to the database
-engine = db.create_engine('sqlite:///../../data/epi_db.sqlite')
-connection = engine.connect()
+# engine = db.create_engine('sqlite:///../../data/epi_db.sqlite')
+# connection = engine.connect()
+# Changed for Heroku
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///../../data/epi_db.sqlite"
+db = SQLAlchemy(app)
 metadata = MetaData()
 metadata.reflect(bind=engine)
 EF = db.Table('epifactor', metadata, autoload=True, autoload_with=engine)
