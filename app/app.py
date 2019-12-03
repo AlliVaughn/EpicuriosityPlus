@@ -13,7 +13,8 @@ app = Flask(__name__)
 # engine = db.create_engine('sqlite:///../../data/epi_db.sqlite')
 # engine = db.session.bind
 # Changed for Heroku
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/epi_db.sqlite"
+# app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/epi_db.sqlite"
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///app/app/db/epi_db.sqlite"
 db = SQLAlchemy(app)
 engine = db.create_engine(app.config["SQLALCHEMY_DATABASE_URI"])
 connection = engine.connect()
