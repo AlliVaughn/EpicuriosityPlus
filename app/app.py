@@ -15,8 +15,10 @@ app = Flask(__name__)
 # Changed for Heroku
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///db/epi_db.sqlite"
 db = SQLAlchemy(app)
+engine = db.session.bind
 metadata = MetaData()
 metadata.reflect(bind=engine)
+
 EF = db.Table('epifactor', metadata, autoload=True, autoload_with=engine)
 WL = db.Table('word_list', metadata, autoload=True, autoload_with=engine)
 
