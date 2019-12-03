@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>EPIC|uriosity</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/index.css"> -->
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" ></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+    <style>
+
+
+        
+        </style>
+        
+  </head>
+
+    <div id="graphDiv"></div>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script>
+      var text_string = {{ data | safe }}
+      // var text_string = "Food Processor Onion Pork Bake Bastille Day New Year's Eve Dried Fruit Port Winter Chill Bon Appétit Sandwich Food Processor Tomato Kid-Friendly Quick & Easy Basil Bacon Summer Lettuce Bon Appétit Beef Ginger Sauté Stir-Fry Quick & Easy Spring Soy Sauce Gourmet Salad Mustard Potato Picnic Lunch Mayonnaise Ham Pea Summer Gourmet Sugar Conscious Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free Milk/Cream Dairy Side Thanksgiving Rosemary Sweet Potato/Yam Fall Nutmeg Simmer Bon Appétit Cake Chocolate Fruit Dessert Bake Kid-Friendly Tropical Fruit Banana Party Peanut Butter Bon Appétit Birthday Vegetarian Pescatarian Tree Nut Free Soy Free Kosher Garlic Sauté Low Carb Quick & Easy Wheat/Gluten-Free Father's Day Beef Tenderloin Brandy Bon Appétit Massachusetts Sauce Mustard Peach Chive Bon Appétit Soup/Stew Garlic Onion No-Cook Vegetarian Spinach Winter Chill Healthy Escarole Gourmet Bread Milk/Cream Breakfast Brunch Dessert Bake Christmas Mother's Day New Year's Day Honey Jam or Jelly Bon Appétit Kidney Friendly Vegetarian Pescatarian Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free Kosher Onion Pork Vegetable Braise Sauté Gourmet Potato High Fiber Lunch Tuna Asparagus Radish Spring Chive Capers Bon Appétit Pescatarian Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free Kosher Salad Ginger No-Cook Vegetarian Fall Asian Pear Watercress Sesame Gourmet Egg Herb Vegetable Side Easter Vegetarian Mother's Day Father's Day Dinner Lunch Basil Cucumber Spring Summer Shower Chill Party Boil Advance Prep Required Sugar Conscious Kidney Friendly Pescatarian Paleo Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free Kosher Bake Kid-Friendly Pear Spice Healthy Bon Appétit Fruit Dessert Bake Apricot Cherry Summer Bon Appétit Vegetarian Pescatarian Peanut Free Tree Nut Free Soy Free Kosher Onion Side Roast Thanksgiving Vinegar Bacon Sweet Potato/Yam Fall Gourmet Paleo Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free No Sugar Added Food Processor Mustard Onion Quick & Easy Ham Spring Gourmet Garlic Side Sauté Vegetarian Quick & Easy Vegan Broccoli Rabe Boil Gourmet Sugar Conscious Kidney Friendly Pescatarian Paleo Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free No Sugar Added Kosher Bread Side Vegetarian Grill Grill/Barbecue Gourmet Sugar Conscious Kidney Friendly Pescatarian Dairy Free Peanut Free Tree Nut Free Soy Free Kosher Cake Coconut Lime Lime Juice Easter Dessert Bake Birthday Kidney Friendly Vegetarian Pescatarian Peanut Free Tree Nut Free Soy Free Kosher Fish Leafy Green Pasta Tomato Bake Quick & Easy Halibut Spinach Healthy Bon Appétit California Citrus Onion Pepper Freeze/Chill Chill Bon Appétit Soup/Stew Chicken Garlic Tomato Sauté Quick & Easy Lime Avocado Jalapeño Cilantro Simmer Bon Appétit Chicken Roast High Fiber Dinner Bacon Fall Spring Summer Winter Family Reunion Bon Appétit Peanut Free Soy Free Breakfast Brunch Bake Thanksgiving Kid-Friendly Quick & Easy Pumpkin Fall Seed Gourmet Kidney Friendly Vegetarian Pescatarian Peanut Free Tree Nut Free Soy Free Kosher Condiment/Spread Fruit Juice Citrus Christmas Quick & Easy Orange Winter Simmer Gourmet Salad Side Fourth of July Quick & Easy Backyard BBQ Lunch Parmesan Avocado Corn Grill Grill/Barbecue Lettuce Chile Pepper Gourmet Vegetarian Pescatarian Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free No Sugar Added Kosher Side Bake Thanksgiving Corn Hot Pepper Fall Jalapeño Bon Appétit Vegetarian Pescatarian Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free Kosher Cake Molasses Buttermilk Bake Cornmeal Spice Ginger Cinnamon Clove Nutmeg Microwave Bake Vegetarian Wheat/Gluten-Free Dinner Lunch Rosemary Tofu Fall Winter Vegan Sage Thyme Parsley Coffee Grinder Sugar Conscious Pescatarian Peanut Free Tree Nut Free No Sugar Added Kosher Condiment/Spread Garlic Mustard No-Cook Quick & Easy Salad Dressing Vinegar Summer Chill Oregano Milk/Cream Food Processor Mixer Berry Chocolate Dairy Fruit Nut Dessert Bake Strawberry Banana Summer Chill Party Double Boiler Bon Appétit Vegetarian Pescatarian Peanut Free Soy Free Kosher Herb Tomato Vegetable Side Basil Bulgur Sugar Conscious Dairy Free Peanut Free Tree Nut Free Soy Free No Sugar Added Kosher Cake Berry Fruit Nut Dessert Bake Freeze/Chill Valentine's Day Mother's Day Cream Cheese Raspberry Pear Birthday Shower Hazelnut Party Bon Appétit Vegetarian Pescatarian Wheat/Gluten-Free Peanut Free Soy Free Kosher Milk/Cream Dairy Egg Dessert Bake Thanksgiving Pumpkin Fall Maple Syrup Gourmet Anniversary Chicken Citrus Fruit Nut Poultry Dinner Casserole/Gratin Orange Tree Nut Almond Pistachio Spice Saffron Potluck Advance Prep Required Dairy Free Wheat/Gluten-Free Peanut Free Soy Free Kosher Salad Microwave Potato Side Quick & Easy Horseradish Summer Dill Gourmet Chicken Low/No Sugar Cinco de Mayo Hot Pepper Spring Healthy Tomatillo Cilantro Seed Simmer Bon Appétit Onion Side Cranberry Orange Almond Pistachio Saffron Carrot Bon Appétit Vegetarian Pescatarian Wheat/Gluten-Free Peanut Free Soy Free Kosher Beer Bourbon Beef Braise Dinner Meat Brisket Winter Jam or Jelly Bon Appétit Dairy Free Peanut Free Tree Nut Free Kosher Pork Low Cal Pork Chop Bon Appétit Dinner Chicken Grains Wheat/Gluten-Free Butternut Squash Maple Syrup Pomegranate Parsley Citrus Fish Fruit Backyard BBQ Dinner Lime Tropical Fruit Mango Salmon Hot Pepper Summer Grill/Barbecue Healthy Party Bon Appétit Pescatarian Paleo Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free No Sugar Added Soup/Stew Bean Poultry Tomato turkey Sauté Dinner Winter Simmer Bon Appétit Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free Kosher Citrus Onion Vegetable Braise Orange Lamb Shank Winter Anise Bon Appétit Garlic Olive Pasta Side Quick & Easy Gourmet Sugar Conscious Kidney Friendly Vegetarian Pescatarian Peanut Free Tree Nut Free Soy Free No Sugar Added Kosher Soup/Stew Potato Appetizer Apple Leek Parsnip Fall Shallot Gourmet Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free Beer Dairy Dessert Super Bowl Quick & Easy Frozen Dessert Brandy Gourmet Kidney Friendly Vegetarian Pescatarian Peanut Free Tree Nut Free Soy Free Kosher Breakfast Apricot Pistachio Cornmeal Grill Grill/Barbecue Pastry Kidney Friendly Vegetarian Pescatarian Peanut Free Soy Free Kosher Duck Broil Vinegar Green Bean Carrot Noodle Soy Sauce Simmer Gourmet Lunar New Year Milk/Cream Rum Chocolate Dessert Vegetarian Kid-Friendly Quick & Easy Banana Coconut Pineapple Curry Bon Appétit Pescatarian Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free Kosher Sauce Garlic Ginger Side Fourth of July Vegetarian Father's Day Backyard BBQ Condiment Summer Honey Simmer Gourmet Fat Free Pescatarian Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free Kosher Onion Breakfast Side Thanksgiving Cranberry Quince Fall Simmer Gourmet Fat Free Vegan Vegetarian Pescatarian Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free Kosher Fruit Juice Rum Punch Alcoholic Cocktail Lime Mango Summer Guava Passion Fruit Bon Appétit Drink 30 Days of Groceries Chickpea Salad Sandwich Carrot Radish Vegetarian Feta Avocado Cilantro Sauce Blender Dessert Quick & Easy Low Sodium Blackberry Raspberry Chill Boil Gourmet Onion Side Sauté Spring Thyme Cabbage Gourmet Olive Onion Potato Roast Sauté Cod Gourmet Sauce Garlic Onion Tomato Vegetarian Quick & Easy Vegan Simmer Gourmet Side Broil Vegetarian Quick & Easy High Fiber Bell Pepper Chill Vegan Chard Gourmet Pescatarian Paleo Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free No Sugar Added Kosher Condiment/Spread Chocolate Dairy Almond Chill Gourmet Blender Food Processor Dairy Chill Gourmet Ginger Herb Nut Pasta Soy Sauté Vegetarian Dinner Basil Peanut Summer Noodle Bon Appétit Pescatarian Tree Nut Free Kosher Side Bake Thanksgiving Stuffing/Dressing Sausage Sage Peanut Free Tree Nut Free Soy Free Side Vegetarian Spinach Oktoberfest Bon Appétit Sugar Conscious Pescatarian Peanut Free Tree Nut Free Soy Free No Sugar Added Kosher Salad Cheese Side Lunch Radish Bon Appétit Sugar Conscious Kidney Friendly Vegetarian Pescatarian Wheat/Gluten-Free Peanut Free Tree Nut Free Soy Free No Sugar Added Kosher Milk/Cream Mixer Egg Side Bake Thanksgiving Vegetarian Squash Fall Winter Swiss Cheese Nutmeg Gourmet Pescatarian Peanut Free Tree Nut Free Soy Free Kosher Cake Mixer Brunch Dessert Bake Kid-Friendly Mother's Day Lunch Blueberry Summer Sour Cream Butter Gourmet Condiment/Spread Mustard No-Cook Kid-Friendly Quick & Easy Mayonnaise Winter Honey Gourmet Salad Bean Herb Onion Side Wheat/Gluten-Free Summer Bon Appétit Sauce Ginger Mushroom Side Vinegar Cilantro Soy Sauce Green Onion/Scallion Egg Side Low Cal Dinner Shrimp Hot Pepper Pan-Fry Soy Sauce Green Onion/Scallion Bon Appétit Sugar Conscious Pescatarian Dairy Free Peanut Free Tree Nut Free No Sugar Added Bitters Rum Tea Alcoholic Lime Drink Onion turkey Roast Christmas Thanksgiving Dinner Fall Sage Bon Appétit Peanut Free Tree Nut Free Soy Free Salad Sandwich Vegetarian Kid-Friendly Quick & Easy Lunch Mayonnaise Tofu Celery Summer Healthy Chive Gourmet Sugar Conscious Pescatarian Dairy Free Wheat/Gluten-Free Peanut Free Tree Nut Free Kosher Herb Vegetable Fry Vegetarian Quick & Easy Mint Green Bean Hot Pepper Fall Summer Vegan Shallot Gourmet Milk/Cream";
+      //   console.log(raw); 
+      //   var text_string = raw.strip(/[ '\-\(\)\*":;\[\]|{},.!?]+/).split(' ');
+      // console.log(text_string);
+      drawWordCloud(text_string);
+      function drawWordCloud(text_string) {
+          var common = "new, year, free, i,me,my,myself,we,us,our,ours,ourselves,you,your,yours,yourself,yourselves,he,him,his,himself,she,her,hers,herself,it,its,itself,they,them,their,theirs,themselves,what,which,who,whom,whose,this,that,these,those,am,is,are,was,were,be,been,being,have,has,had,having,do,does,did,doing,will,would,should,can,could,ought,i'm,you're,he's,she's,it's,we're,they're,i've,you've,we've,they've,i'd,you'd,he'd,she'd,we'd,they'd,i'll,you'll,he'll,she'll,we'll,they'll,isn't,aren't,wasn't,weren't,hasn't,haven't,hadn't,doesn't,don't,didn't,won't,wouldn't,shan't,shouldn't,can't,cannot,couldn't,mustn't,let's,that's,who's,what's,here's,there's,when's,where's,why's,how's,a,an,the,and,but,if,or,because,as,until,while,of,at,by,for,with,about,against,between,into,through,during,before,after,above,below,to,from,up,upon,down,in,out,on,off,over,under,again,further,then,once,here,there,when,where,why,how,all,any,both,each,few,more,most,other,some,such,no,nor,not,only,own,same,so,than,too,very,say,says,said,shall,love";
+          var word_count = {};
+          // This is to show how the word_count works! We can uncomment this and look at the JS console. 
+          // console.log(word_count);
+          var words = text_string.split(/[ '\-\(\)\*":;\[\]|{},.!?]+/);
+          // var words = text_string.split(/[ '\(\)\*":;\[\]|{},.!?]+/);
+          if (words.length == 1) {
+              word_count[words[0]] = 1;
+          } else {
+              words.forEach(function (word) {
+                  var word = word.toLowerCase();
+                  if (word != "" && common.indexOf(word) == -1 && word.length > 1) {
+                      if (word_count[word]) {
+                          word_count[word]++;
+                      } else {
+                          word_count[word] = 1;
+                      }
+                  }
+              })
+          }
+          var svg_location = "#chart";
+          var width = 500;
+          var height = 600;
+          var fill = d3.scale.linear()
+              .range(["#2C5A86", "white"])
+              .domain([0, 150]);
+          var word_entries = d3.entries(word_count);
+          var xScale = d3.scale.linear()
+              .domain([0, d3.max(word_entries, function (d) {
+                  return d.value;
+              })
+              ])
+              .range([10, 100]);
+          d3.layout.cloud().size([width, height])
+              .timeInterval(20)
+              .words(word_entries)
+              .fontSize(function (d) { return xScale(+d.value); })
+              .text(function (d) { return d.key; })
+              .rotate(function () { return ~~(Math.random() * 2) * 90; })
+              .font("Impact")
+              .on("end", draw)
+              .start();
+          function draw(words) {
+              d3.select(svg_location).append("svg")
+                  .attr("width", width)
+                  .attr("height", height)
+                  .append("g")
+                  .attr("transform", "translate(" + [width >> 1, height >> 1] + ")")
+                  .selectAll("text")
+                  .data(words)
+                  .enter().append("text")
+                  .style("font-size", function (d) { return xScale(d.value) + "px"; })
+                  .style("font-family", "Impact")
+                  .style("fill", function (d, i) { return fill(i); })
+                  .attr("text-anchor", "middle")
+                  .attr("transform", function (d) {
+                      return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                  })
+                  .text(function (d) { return d.key; });
+          }
+
+          d3.layout.cloud().stop();
+      }
+
+  </script>
+
+</html>
